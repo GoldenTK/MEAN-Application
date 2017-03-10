@@ -1,0 +1,25 @@
+{
+  "name": "mean-app",
+  "version": "1.0.0",
+  "description": "MEAN Authorization app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
+  },
+
+  "dependencies": {
+    "express": "*",
+    "mongoose": "*",
+    "bcryptjs ": "*",
+    "cors": "*",
+    "jsonwebtoken": "*",
+    "body-parser": "*",
+    "passport": "*",
+    "passport-jwt": "*"
+
+  },
+  
+  "author": "Tomasz Klęk",
+  "license": "ISC"
+}
