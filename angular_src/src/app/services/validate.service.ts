@@ -18,12 +18,17 @@ export class ValidateService {
     return re.test(email);
   }
 
-  validatePassword(password, confirmPassword) {
-    if(password !== confirmPassword && password.length <= 8) {
-      return false;
-    } else {
+  validatePasswordCompare(password, confirmPassword) {
+    if(password == confirmPassword) {
       return true;
+    } else {
+      return false;
     }
+  }
+
+  validatePassword(password) {
+    const re = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+    return re.test(password);
   }
 
 }

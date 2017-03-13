@@ -39,7 +39,7 @@
             if(err) throw err;
             if(isMatch) {
                 const token = jwt.sign(user, config.secret, {
-                    expiresIn: 604800 // 1 week 
+                    expiresIn: 3600 // 1 hour
                 });
 
             res.json({

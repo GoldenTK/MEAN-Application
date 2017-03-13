@@ -18,7 +18,8 @@ export class RegisterComponent implements OnInit {
   confirmPassword: string;
   subscription: any;
 
-  constructor(private  validateService: ValidateService, 
+  constructor(
+    private  validateService: ValidateService, 
     private authService: AuthService,
     private flashMessagesService: FlashMessagesService,
     private router: Router
@@ -48,7 +49,8 @@ export class RegisterComponent implements OnInit {
       }
 
       //Validate password
-      if(!this.validateService.validatePassword(this.password, this.confirmPassword)) {
+      if(!(this.validateService.validatePasswordCompare(this.password, this.confirmPassword) 
+      && this.validateService.validatePassword(this.password))) {
         this.flashMessagesService.show('Wrong password', {cssClass: 'alert-danger', timeout: 3000});
         return false;
       }
