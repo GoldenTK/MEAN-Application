@@ -28,6 +28,7 @@ export class SmartComponentsService {
   getToogleSwitches() {
     return this.http.get('http://localhost:3000/smartDevices/toogleSwitches/').map(res => res.json());
   }
+  
   deleteToogleSwitch(toogleSwitch) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');

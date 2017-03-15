@@ -38,8 +38,8 @@
  //delete ToogleSwitch route
  router.post('/delete', (req, res, next) => {
 
-    let toogleSwitch = req.body.toogleSwitch;
-
+    let toogleSwitch = req.body;
+    
     ToogleSwitch.deleteToogleSwitch(toogleSwitch, (err) => {
         if(err) {
             res.json({ success: false, msg: 'Failed to delete Toogle Switch state'});
