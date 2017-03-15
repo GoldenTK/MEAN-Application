@@ -23,6 +23,7 @@
   const app = express();
 
   const users = require('./routes/users');
+  const toogleSwitches = require('./routes/smartDevices/toogleSwitches');
   
   //Port number
   const port = 3000;
@@ -43,6 +44,7 @@
   require('./config/passport')(passport);
 
   app.use('/users', users);
+  app.use('/smartDevices/toogleSwitches', toogleSwitches);
 
   // Main Route
   app.get('/', (req, res) => {
