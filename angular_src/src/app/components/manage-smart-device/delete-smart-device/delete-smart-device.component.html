@@ -1,0 +1,15 @@
+<h3 class="page-header">Delete Smart Device</h3>
+<table id="mytable" class="table table-bordred table-striped">
+  <thead>
+    <th>Name</th>
+    <th>State</th>
+    <th>Delete</th>
+  </thead>
+  <tbody *ngFor="let toogleSwitch of toogleSwitches">
+    <tr>
+      <td>{{toogleSwitch.name}}</td>
+      <td>{{toogleSwitch.state}}</td>
+      <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button (click)="onDelete(toogleSwitch)" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+    </tr>
+  </tbody>
+</table>

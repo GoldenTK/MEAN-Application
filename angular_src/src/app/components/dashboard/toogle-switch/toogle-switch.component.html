@@ -1,0 +1,10 @@
+<div class="col-sm-4 col-lg-4 col-md-4" *ngFor="let toogleSwitch of toogleSwitches" (click)="onStateChange(toogleSwitch._id,toogleSwitch.state)">
+    <div class="thumbnail">
+      <img src="" alt="">
+      <div class="caption text-center">
+        <h3>{{toogleSwitch.name}}</h3>
+        <h4>{{toogleSwitch.description}}</h4>
+        <p>{{toogleSwitch.state}}</p>
+      </div>
+    </div>
+  </div>
