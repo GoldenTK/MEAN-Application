@@ -5,8 +5,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-delete-smart-device',
-  templateUrl: './delete-smart-device.component.html',
-  styleUrls: ['./delete-smart-device.component.css']
+  templateUrl: './delete-smart-device.component.html'
 })
 export class DeleteSmartDeviceComponent implements OnInit {
 
@@ -23,7 +22,11 @@ export class DeleteSmartDeviceComponent implements OnInit {
 
   getToogleSwitches() {
     this.subscription = this.smartComponentsService.getToogleSwitches().subscribe((data) => {
-      this.toogleSwitches = data;
+      for(let toogleSwitch of data) {
+        if(JSON.parse(localStorage.getItem('user')).id == toogleSwitch.user_id) {
+          this.toogleSwitches.push(toogleSwitch);
+        }
+      }
     });
   }
 

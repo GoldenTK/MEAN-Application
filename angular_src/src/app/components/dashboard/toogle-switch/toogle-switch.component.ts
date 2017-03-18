@@ -29,7 +29,11 @@ export class ToogleSwitchComponent implements OnInit, OnDestroy {
 
   getToogleSwitches() {
     this.subscription = this.smartComponentsService.getToogleSwitches().subscribe((data) => {
-      this.toogleSwitches = data;
+      for(let toogleSwitch of data) {
+        if(JSON.parse(localStorage.getItem('user')).id == toogleSwitch.user_id) {
+          this.toogleSwitches.push(toogleSwitch);
+        }
+      }
     });
   }
 
@@ -38,7 +42,11 @@ export class ToogleSwitchComponent implements OnInit, OnDestroy {
       if (!data.success) {
         this.flashMessagesService.show('State not changed', {cssClass: 'alert-danger', timeout: 3000});
       } else {
-      this.getToogleSwitches();
+        for (let toogleSwitch of this.toogleSwitches) {
+          if (id == toogleSwitch._id) {
+            toogleSwitch.state = !toogleSwitch.state;
+          }
+        }
       }
     });
   }

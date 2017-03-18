@@ -25,7 +25,10 @@ export class AddSmartDeviceComponent implements OnInit {
   }
 
   onSubmitAddSmartDevice() {
+    let user_id = JSON.parse(localStorage.getItem('user')).id;
+
     let newToogleSwitch = {
+      user_id: user_id,
       name: this.name,
       description: this.description,
       state: false

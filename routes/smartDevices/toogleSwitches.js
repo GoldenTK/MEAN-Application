@@ -7,9 +7,10 @@
  //add ToogleSwitch route
  router.post('/add', (req, res, next) => {
     let newToogleSwitch = new ToogleSwitch({
-         name: req.body.name,
-         description: req.body.description,
-         state: req.body.state
+        user_id: req.body.user_id,
+        name: req.body.name,
+        description: req.body.description,
+        state: req.body.state
     });
 
     ToogleSwitch.addToogleSwitch(newToogleSwitch, (err) => {
@@ -35,11 +36,12 @@
         }
     });
  });
+ 
  //delete ToogleSwitch route
  router.post('/delete', (req, res, next) => {
 
     let toogleSwitch = req.body;
-    
+
     ToogleSwitch.deleteToogleSwitch(toogleSwitch, (err) => {
         if(err) {
             res.json({ success: false, msg: 'Failed to delete Toogle Switch state'});

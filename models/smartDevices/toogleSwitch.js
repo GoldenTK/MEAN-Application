@@ -1,8 +1,15 @@
 const mongoose = require('mongoose');
 const config = require('../../config/database');
 
+const UserSchema = require('../../models/user');
+
 //User schema
 const ToogleSwitchSchema = mongoose.Schema({
+    user_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'UserSchema',
+        required: true
+    },
     name: {
         type: String,
         required: true

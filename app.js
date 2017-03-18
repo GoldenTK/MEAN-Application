@@ -43,6 +43,18 @@
 
   require('./config/passport')(passport);
 
+  //Secure API
+  app.all('/*', function(req, res, next) {
+    // restrict it to the required domain
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    if (req.method == 'OPTIONS') {
+      res.status(200).end();
+    } else {
+      next();
+    }
+  });
+
   app.use('/users', users);
   app.use('/smartDevices/toogleSwitches', toogleSwitches);
 
