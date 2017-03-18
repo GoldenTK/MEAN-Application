@@ -30,13 +30,17 @@ export class DeleteSmartDeviceComponent implements OnInit {
     });
   }
 
-  onDelete(toogleSwitch) {
-    this.smartComponentsService.deleteToogleSwitch(toogleSwitch).subscribe((data) => {
+  onDelete(id) {
+    this.smartComponentsService.deleteToogleSwitch(id).subscribe((data) => {
       if (!data.success) {
         this.flashMessagesService.show('Toogle Switch not deleted', {cssClass: 'alert-danger', timeout: 3000});
       } else {
         this.flashMessagesService.show('Toogle Switch deleted', {cssClass: 'alert-success', timeout: 3000});
-        this.getToogleSwitches();
+        for(let toogleSwitch of this.toogleSwitches) {
+          if (toogleSwitch._id == id) {
+            this.toogleSwitches.splice(this.toogleSwitches.indexOf(toogleSwitch),1);
+          }
+        }
       }
     });
   }

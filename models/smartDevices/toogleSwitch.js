@@ -35,8 +35,8 @@ module.exports.changeToogleSwitchState = (id, newState, callback) => {
 module.exports.getToogleSwitches = (callback) => {
      ToogleSwitch.find(callback);
 }
-module.exports.deleteToogleSwitch = (toogleSwitch, callback) => {
-     ToogleSwitch.remove(toogleSwitch, callback);
+module.exports.deleteToogleSwitch = (id, callback) => {
+     ToogleSwitch.remove({_id: id}, callback);
 }
 
 module.exports.addToogleSwitch = (newToogleSwitch, callback) => {
