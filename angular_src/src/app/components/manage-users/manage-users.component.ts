@@ -18,7 +18,6 @@ export class ManageUsersComponent implements OnInit {
     this.authService.getUserGroup().subscribe(data => {
       this.usersGroups = data;
     });
-    console.log(this.authService.checkAdmin());
   }
 
   getUsersGroupName(id) {
