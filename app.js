@@ -23,6 +23,7 @@
   const app = express();
 
   const users = require('./routes/users');
+  const usersGroups = require('./routes/usersGroups');
   const toogleSwitches = require('./routes/smartDevices/toogleSwitches');
   
   //Port number
@@ -56,6 +57,7 @@
   });
 
   app.use('/users', users);
+  app.use('/usersGroups', usersGroups);
   app.use('/smartDevices/toogleSwitches', toogleSwitches);
 
   // Main Route

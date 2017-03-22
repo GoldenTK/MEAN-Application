@@ -16,6 +16,7 @@ export class RegisterComponent implements OnInit {
   email: string;
   password: string;
   confirmPassword: string;
+  userGroup: string;
   subscription: any;
 
   constructor(
@@ -33,6 +34,7 @@ export class RegisterComponent implements OnInit {
         name: this.name,
         username: this.username,
         email: this.email,
+        userGroup: "58cd61c2a45721323b7e796d",
         password: this.password
       }
 

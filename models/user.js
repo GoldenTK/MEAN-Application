@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const config = require('../config/database');
 
+const UsersGroupSchema = require('./usersGroup');
+
 //User schema
 const UserSchema = mongoose.Schema({
     name: {
@@ -14,6 +16,11 @@ const UserSchema = mongoose.Schema({
     },
     username: {
         type: String,
+        required: true
+    },
+    userGroup: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'UsersGroupSchema',
         required: true
     },
     password: {
@@ -31,6 +38,10 @@ module.exports.getUserById = (id, callback) => {
 module.exports.getUserByUsername = (username, callback) => {
     const query = {username: username}
     User.findOne(query, callback);
+}
+
+module.exports.getUsers = (callback) => {
+    User.find(callback);
 }
 
 module.exports.addUser = (newUser, callback) => {

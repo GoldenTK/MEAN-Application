@@ -12,6 +12,7 @@
          name: req.body.name,
          email: req.body.email,
          username: req.body.username,
+         userGroup: req.body.userGroup,
          password: req.body.password
     });
 
@@ -49,7 +50,8 @@
                     id: user._id,
                     name: user.name,
                     username: user.username,
-                    email: user.email
+                    email: user.email,
+                    userGroup: user.userGroup
                 }
             });
             } else {
@@ -76,6 +78,16 @@
  //Profile route
  router.get('/profile', passport.authenticate('jwt', {session: false}), (req, res, next) => {
     res.json({user: req.user});
+ });
+
+ //Get users
+ router.get('/', (req, res, next) => {
+    User.getUsers((err, users) => {
+        if(err) {
+            return res.json({ success: false, msg: 'Users not found'});
+        }
+        res.json(users);
+    });
  });
 
  module.exports = router;

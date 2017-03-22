@@ -17,17 +17,21 @@ import { AuthService } from './services/auth.service';
 import { SmartComponentsService } from './services/smart-components.service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AuthGuard } from './guards/auth.guard';
+import { AdminGuard } from './guards/admin.guard';
 import { ChangePasswordComponent } from './components/profile/change-password/change-password.component';
 import { ToogleSwitchComponent } from './components/dashboard/toogle-switch/toogle-switch.component';
 import { ManageSmartDeviceComponent } from './components/manage-smart-device/manage-smart-device.component';
 import { AddSmartDeviceComponent } from './components/manage-smart-device/add-smart-device/add-smart-device.component';
 import { DeleteSmartDeviceComponent } from './components/manage-smart-device/delete-smart-device/delete-smart-device.component';
+import { EditSmartDeviceComponent } from './components/manage-smart-device/edit-smart-device/edit-smart-device.component';
+import { ManageUsersComponent } from './components/manage-users/manage-users.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'manageSmartDevice', component: ManageSmartDeviceComponent, canActivate: [AuthGuard]},
+  {path: 'manageUsers', component: ManageUsersComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: '**', component: HomeComponent}
@@ -47,7 +51,9 @@ const appRoutes: Routes = [
     ToogleSwitchComponent,
     ManageSmartDeviceComponent,
     AddSmartDeviceComponent,
-    DeleteSmartDeviceComponent
+    DeleteSmartDeviceComponent,
+    EditSmartDeviceComponent,
+    ManageUsersComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +62,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule
   ],
-  providers: [ValidateService, AuthService, SmartComponentsService, AuthGuard],
+  providers: [ValidateService, AuthService, SmartComponentsService, AuthGuard, AdminGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

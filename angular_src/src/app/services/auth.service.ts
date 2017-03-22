@@ -32,6 +32,15 @@ export class AuthService {
     return this.http.get('http://localhost:3000/users/profile', {headers: headers})
       .map(res => res.json());
   }
+  
+  getUsers() {
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('http://localhost:3000/users', {headers: headers})
+      .map(res => res.json());
+  }
 
   storeUserData(token, user) {
      localStorage.setItem('id_token',token);
@@ -43,6 +52,19 @@ export class AuthService {
 
   loggedIn() {
     return tokenNotExpired();
+  }
+
+  checkAdmin() {
+    if(localStorage.getItem('user')) {
+      let check = JSON.parse(localStorage.getItem('user')).userGroup;
+      if (check == "58cd622aa45721323b7e796e"){
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
   }
 
   loadToken() {
@@ -64,6 +86,13 @@ export class AuthService {
     headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:3000/users/changeUserPassword', data, {headers: headers})
       .map(res => res.json());
+  }
+
+  getUserGroup() {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('http://localhost:3000/usersGroups', {headers: headers})
+        .map(res => res.json());
   }
 
 }
